@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costruzione Unità Mobili</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <header>
+                <h1>Costruzione Unità Mobili</h1>
+            </header>
+            <div class="section">
+                <h2>Unità Mobili</h2>
+                <form id="unit-form" class="form">
+                    <select id="unit-category" required></select>
+                    <input type="text" id="unit-name" placeholder="Nome Unità Mobile" required>
+                    <button type="submit">Aggiungi Unità Mobile</button>
+                </form>
+            </div>
+            <div class="section">
+                <h2>Cassetti</h2>
+                <form id="drawer-form" class="form">
+                    <select id="drawer-unit" required></select>
+                    <input type="text" id="drawer-name" placeholder="Nome Cassetto" required>
+                    <button type="submit">Aggiungi Cassetto</button>
+                </form>
+            </div>
+            <div class="section">
+                <h2>Materiali e Strumenti</h2>
+                <form id="item-form" class="form">
+                    <select id="item-drawer" required></select>
+                    <input type="text" id="item-material" placeholder="Nome Materiale/Strumento" required>
+                    <button type="button" id="select-material-button">Seleziona dal catalogo</button>
+                    <input type="number" id="item-quantity" placeholder="Quantità" required>
+                    <input type="number" id="item-price" placeholder="Valore Unitario (€)" step="0.01" required>
+                    <button type="submit">Aggiungi/Modifica Materiale/Strumento</button>
+                </form>
+            </div>
+            <div id="material-popup" class="material-popup">
+                <div class="material-popup-content">
+                    <span class="close">&times;</span>
+                    <h2>Seleziona Materiale/Strumento</h2>
+                    <input type="text" id="search-material" placeholder="Cerca Materiale/Strumento">
+                    <table id="material-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Categoria</th>
+                                <th>Prezzo Unitario</th>
+                                <th>Seleziona</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="org-chart" class="org-chart"></div>
+            <div id="table-container">
+                <button id="toggle-table"><i id="toggle-icon" class="fas fa-angle-up"></i> <span id="total-overall-button">Totale complessivo: €0.00</span></button>
+                <table id="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Unità Mobile</th>
+                            <th>Cassetto</th>
+                            <th>Materiale/Strumento</th>
+                            <th>Quantità</th>
+                            <th>Valore Unitario (€)</th>
+                            <th>Totale (€)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+            <div class="action-buttons">
+                <button id="save-button" class="action-button save-button">Salva Dati</button>
+                <button id="load-button" class="action-button load-button">Carica Dati</button>
+                <button id="export-button" class="action-button export-button">Esporta in Excel</button>
+                <input type="file" id="load-file" accept=".json">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
